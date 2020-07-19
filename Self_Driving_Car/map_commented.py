@@ -16,7 +16,7 @@ from kivy.properties import NumericProperty, ReferenceListProperty, ObjectProper
 from kivy.vector import Vector
 from kivy.clock import Clock
 # Importing the Dqn object from our AI in ia.py
-from ai import Dqn
+from Self_Driving_Car.ai import Dqn
 
 # Adding this line if we don't want the right click to put a red point
 Config.set('input', 'mouse', 'mouse,multitouch_on_demand')
@@ -29,14 +29,16 @@ length = 0 # the length of the last drawing
 
 # Getting our AI, which we call "brain", and that contains our neural network that represents our Q-function
 brain = Dqn(5, 3, 0.9) # 5 sensors, 3 actions, gama = 0.9
-action2rotation = [0, 20, -20] # action = 0 => no rotation, action = 1 => rotate 20 degres, action = 2 => rotate -20 degres
+action2rotation = [0, 20, -20] # action = 0 => no rotation, action = 1 => rotate 20 degres, action = 2 => rotate -20 
+# degres 
 last_reward = 0 # initializing the last reward
 scores = [] # initializing the mean score curve (sliding window of the rewards) with respect to time
 
 # Initializing the map
 first_update = True # using this trick to initialize the map only once
 def init():
-    global sand # sand is an array that has as many cells as our graphic interface has pixels. Each cell has a one if there is sand, 0 otherwise.
+    global sand # sand is an array that has as many cells as our graphic interface has pixels. Each cell has a one if
+    # there is sand, 0 otherwise. 
     global goal_x # x-coordinate of the goal (where the car has to go, that is the airport or the downtown)
     global goal_y # y-coordinate of the goal (where the car has to go, that is the airport or the downtown)
     sand = np.zeros((longueur,largeur)) # initializing the sand array with only zeros
